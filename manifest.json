@@ -1,7 +1,7 @@
 {
   "name": "Draw Your Professor Upload Tool",
   "description": "Upload pictures to drawyourprofessor.com",
-  "version": "0.1",
+  "version": "1.0",
   "manifest_version": 2,
   "short_name": "dyp-upload",
   "permissions": [
