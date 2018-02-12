@@ -10,7 +10,7 @@
   canvasDiv.insertBefore(input, canvasDiv.childNodes[0])
 
   document.getElementById("sav").style.marginLeft = "-250px";
-  document.getElementById("sav").style.marginTop = "-250px";
+  document.getElementById("sav").style.marginTop = "600px";
 
   var imgLoader = document.getElementById("image-input");
   imgLoader.addEventListener("change", handleImg, false);
