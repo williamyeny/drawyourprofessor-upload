@@ -1,4 +1,8 @@
 (function() {
+  var canvas = document.getElementById("test");
+  var ctx = canvas.getContext("2d");
+  var img;
+  
   var input = document.createElement("input"); "<input id=\"image-input\" style=\"width:200px\" type=\"file\" multiple=\"false\" accept=\"image/*\">"
   input.setAttribute("id", "image-input");
   input.setAttribute("type", "file");
@@ -20,17 +24,7 @@
   document.getElementById("sav").style.marginLeft = "-250px";
   document.getElementById("sav").style.marginTop = "600px";
 
-  var imgLoader = document.getElementById("image-input");
-  imgLoader.addEventListener("change", handleImg, false);
-  button.addEventListener("click", function() {
-    drawImageProp(ctx, img);
-  })
-
-  var canvas = document.getElementById("test");
-  var ctx = canvas.getContext("2d");
-  var img;
-
-  function handleImg(e) {
+  input.addEventListener("change",   function(e) {
     var reader = new FileReader();
     reader.onload = function(event) {
       img = new Image();
@@ -40,7 +34,11 @@
       img.src = event.target.result;
     }
     reader.readAsDataURL(e.target.files[0]);
-  }
+  }, false);
+
+  button.addEventListener("click", function() {
+    drawImageProp(ctx, img);
+  })
 
   /**
    * By Ken Fyrstenberg Nilsen
