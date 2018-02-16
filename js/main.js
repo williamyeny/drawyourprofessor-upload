@@ -1,26 +1,39 @@
 (function() {
-  var input = document.createElement("input"); "<input id=\"image-input\" type=\"file\" multiple=\"false\" accept=\"image/*\">"
+  var input = document.createElement("input"); "<input id=\"image-input\" style=\"width:200px\" type=\"file\" multiple=\"false\" accept=\"image/*\">"
   input.setAttribute("id", "image-input");
   input.setAttribute("type", "file");
   input.setAttribute("multiple", "false");
   input.setAttribute("accept", "image/*");
+  input.setAttribute("style", "width:200px;");
+
+  var button = document.createElement("button");
+  var buttonText = document.createTextNode("Re-paste Image");
+  button.setAttribute("id", "repaste-image");
+  button.appendChild(buttonText);
 
   var canvasDiv = document.getElementById("canvas_canvas");
+  canvasDiv.appendChild(button);
+  canvasDiv.insertBefore(button, canvasDiv.childNodes[0])
   canvasDiv.appendChild(input);
-  canvasDiv.insertBefore(input, canvasDiv.childNodes[0])
+  canvasDiv.insertBefore(input, canvasDiv.childNodes[0]);
 
   document.getElementById("sav").style.marginLeft = "-250px";
   document.getElementById("sav").style.marginTop = "600px";
 
   var imgLoader = document.getElementById("image-input");
   imgLoader.addEventListener("change", handleImg, false);
+  button.addEventListener("click", function() {
+    drawImageProp(ctx, img);
+  })
+
   var canvas = document.getElementById("test");
   var ctx = canvas.getContext("2d");
+  var img;
 
   function handleImg(e) {
     var reader = new FileReader();
     reader.onload = function(event) {
-      var img = new Image();
+      img = new Image();
       img.onload = function() {
         drawImageProp(ctx, img);
       }
